@@ -57,6 +57,10 @@ class App extends React.Component {
     console.log("성공", result.data)
     // 모델에 있는 title, content에 json형식으로 전달
     // await이 없으면 pending, await을 넣기 위해 함수의 시작에 async필요
+
+    //글을 등록하고 다시 불러온다
+    this.setState({title:'',content:''}) // 요놈은 인풋창 초기화~
+    this.getPosts()
   }
 
   render(){
@@ -80,7 +84,7 @@ class App extends React.Component {
         </form>
         {
           this.state.allPost.map((post)=>
-          <PostView title={post.title} content={post.content}/>
+          <PostView key={post.id} id={post.id} title={post.title} content={post.content}/>
           )
         }
         

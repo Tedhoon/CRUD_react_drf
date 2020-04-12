@@ -8,11 +8,11 @@ const dummy_prop = {
 
 class PostView extends Component {
     render() {
-        const {title, content} = dummy_prop //비구조화 할당
+        const {title, content} = this.props //비구조화 할당
         return (
             <div>
-                <h3>{this.props.title}</h3>
-                <p>{this.props.content}</p>
+                <h3>{title}</h3>
+                <p>{content}</p>
             </div>
         );
     }
