@@ -12,6 +12,6 @@ export default {
     },
     //글 작성하기
     createPost(data) {
-        return axios.post('/post/',data)
+        return axios.post('/posts/',data)
     }
 }
