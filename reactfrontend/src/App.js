@@ -61,6 +61,14 @@ class App extends React.Component {
     //글을 등록하고 다시 불러온다
     this.setState({title:'',content:''}) // 요놈은 인풋창 초기화~
     this.getPosts()
+
+    //글을 삭제했을 때 바로 없애기!
+  }
+
+  deletePost = async (event) => {
+    let result = await api.deletePost(event.target.value)
+    console.log(result)
+    this.getPosts()
   }
 
   render(){
@@ -84,7 +92,10 @@ class App extends React.Component {
         </form>
         {
           this.state.allPost.map((post)=>
-          <PostView key={post.id} id={post.id} title={post.title} content={post.content}/>
+          <div>
+            <PostView key={post.id} id={post.id} title={post.title} content={post.content}/>
+            <button value={post.id} onClick={this.deletePost}>삭제하기</button>
+          </div>
           )
         }
         
