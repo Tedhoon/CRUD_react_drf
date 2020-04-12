@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import api from './api';
+import PostView from './Components/PostView';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component { 
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      title:'',
+      content:'',
+      results: []
+    }
+  }
+
+  componentDidMount() {
+    this.getPosts()
+  }
+  getPosts() {
+    const _results = "hello" // getApi 함수 실행
+    this.setState({results: _results})
+  }
+
+  render(){
+    return(
+      <div>
+        <PostView />
+      </div>
+    )
+  }
 }
 
 export default App;
